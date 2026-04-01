@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Tell LLMs no. Serve robots.txt and llms.txt that block AI crawlers from your site.">
+  <title>nahbro.dev — tell LLMs no.</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #111111;
+      --bg-code: #0f0f0f;
+      --text: #e8e8e8;
+      --text-muted: #888888;
+      --accent: #ff4444;
+      --accent-dim: #cc3333;
+      --border: #222222;
+      --border-code: #1e1e1e;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-monospace, 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.25rem 4rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    header { margin-bottom: 3.5rem; }
+
+    .logo {
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .logo .nah { color: var(--accent); }
+
+    .tagline {
+      margin-top: 0.75rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .tagline strong { color: var(--text); }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    section { margin-bottom: 2.5rem; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    p strong { color: var(--text); }
+
+    .code-block {
+      background: var(--bg-code);
+      border: 1px solid var(--border-code);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      margin-top: 0.75rem;
+      overflow-x: auto;
+    }
+
+    .code-block + .code-block { margin-top: 0.5rem; }
+
+    .code-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    code {
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: var(--text);
+      white-space: pre;
+      display: block;
+    }
+
+    code .cmd { color: #7ec8e3; }
+    code .url { color: #b5e853; }
+    code .flag { color: var(--text-muted); }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-dim);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    a:hover { color: #ff6666; border-color: #ff6666; }
+
+    footer {
+      margin-top: auto;
+      padding-top: 3rem;
+      font-size: 0.78rem;
+      color: #444;
+      text-align: center;
+    }
+
+    footer a { color: #555; border-bottom-color: #333; }
+    footer a:hover { color: #888; border-color: #666; }
+
+    .cursor {
+      display: inline-block;
+      width: 0.55em;
+      height: 1em;
+      background: var(--accent);
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+      margin-left: 2px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    @media (max-width: 480px) {
+      code { font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo"><span class="nah">nah</span>bro.dev<span class="cursor"></span></div>
+      <p class="tagline"><strong>tell LLMs no.</strong> serve the files that make AI crawlers behave.</p>
+    </header>
+
+    <hr class="divider">
+
+    <section>
+      <div class="section-label">// what</div>
+      <p>
+        A dead-simple API that generates <strong>robots.txt</strong> and <strong>llms.txt</strong>
+        files pre-loaded with every known AI crawler user-agent. Drop them at the root of your site
+        and stop feeding the machine &mdash; or at least make it ask nicely.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-label">// add to your site</div>
+
+      <div class="code-label">robots.txt &mdash; block all AI crawlers</div>
+      <div class="code-block">
+        <code><span class="cmd">curl</span> <span class="flag">-o</span> public/robots.txt <span class="url">https://nahbro.dev/robots.txt</span></code>
+      </div>
+
+      <div class="code-label" style="margin-top:1rem;">llms.txt &mdash; signal your content preferences</div>
+      <div class="code-block">
+        <code><span class="cmd">curl</span> <span class="flag">-o</span> public/llms.txt <span class="url">https://nahbro.dev/llms.txt</span></code>
+      </div>
+
+      <div class="code-label" style="margin-top:1rem;">or fetch both at once</div>
+      <div class="code-block">
+        <code><span class="cmd">curl</span> <span class="flag">-o</span> public/robots.txt <span class="url">https://nahbro.dev/robots.txt</span>   <span class="flag">-o</span> public/llms.txt <span class="url">https://nahbro.dev/llms.txt</span></code>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">// source</div>
+      <p>
+        Open source. Read the code, audit the list, send a PR.<br>
+        <a href="https://github.com/todie/nahbro.dev" target="_blank" rel="noopener noreferrer">github.com/todie/nahbro.dev</a>
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <footer>
+      <p>
+        &lt;meta name=&quot;robots&quot; content=&quot;noindex&quot;&gt; &mdash; yes, this page blocks itself.
+        &nbsp;<a href="https://github.com/todie/nahbro.dev" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
