@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
-  <meta name="description" content="Tell LLMs no. Serve robots.txt and llms.txt that block AI crawlers from your site.">
-  <title>nahbro.dev — tell LLMs no.</title>
+  <meta name="description" content="a polite note to the robots that definitely aren't reading this">
+  <title>nahbro.dev</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -84,6 +84,8 @@
 
     p strong { color: var(--text); }
 
+    p + p { margin-top: 0.75rem; }
+
     .code-block {
       background: var(--bg-code);
       border: 1px solid var(--border-code);
@@ -131,6 +133,7 @@
       font-size: 0.78rem;
       color: #444;
       text-align: center;
+      line-height: 1.9;
     }
 
     footer a { color: #555; border-bottom-color: #333; }
@@ -151,6 +154,9 @@
       50%       { opacity: 0; }
     }
 
+    .atoms p { margin-bottom: 0.5rem; }
+    .atoms p:last-child { margin-bottom: 0; }
+
     @media (max-width: 480px) {
       code { font-size: 0.78rem; }
     }
@@ -161,56 +167,51 @@
 
     <header>
       <div class="logo"><span class="nah">nah</span>bro.dev<span class="cursor"></span></div>
-      <p class="tagline"><strong>tell LLMs no.</strong> serve the files that make AI crawlers behave.</p>
+      <p class="tagline"><strong>nah bro</strong> as a service</p>
     </header>
 
     <hr class="divider">
 
-    <section>
-      <div class="section-label">// what</div>
-      <p>
-        A dead-simple API that generates <strong>robots.txt</strong> and <strong>llms.txt</strong>
-        files pre-loaded with every known AI crawler user-agent. Drop them at the root of your site
-        and stop feeding the machine &mdash; or at least make it ask nicely.
-      </p>
+    <section class="atoms">
+      <p>there are a lot of robots.</p>
+      <p>they want your content.</p>
+      <p>nahbro.dev generates the files that ask them to leave.</p>
     </section>
 
+    <hr class="divider">
+
     <section>
-      <div class="section-label">// add to your site</div>
-
-      <div class="code-label">robots.txt &mdash; block all AI crawlers</div>
       <div class="code-block">
-        <code><span class="cmd">curl</span> <span class="flag">-o</span> public/robots.txt <span class="url">https://nahbro.dev/robots.txt</span></code>
-      </div>
-
-      <div class="code-label" style="margin-top:1rem;">llms.txt &mdash; signal your content preferences</div>
-      <div class="code-block">
-        <code><span class="cmd">curl</span> <span class="flag">-o</span> public/llms.txt <span class="url">https://nahbro.dev/llms.txt</span></code>
-      </div>
-
-      <div class="code-label" style="margin-top:1rem;">or fetch both at once</div>
-      <div class="code-block">
-        <code><span class="cmd">curl</span> <span class="flag">-o</span> public/robots.txt <span class="url">https://nahbro.dev/robots.txt</span>   <span class="flag">-o</span> public/llms.txt <span class="url">https://nahbro.dev/llms.txt</span></code>
+        <code><span class="cmd">curl</span> <span class="flag">-s</span> <span class="url">https://nahbro.dev/robots.txt</span> <span class="flag">&gt;</span> public/robots.txt
+<span class="cmd">curl</span> <span class="flag">-s</span> <span class="url">https://nahbro.dev/llms.txt</span> <span class="flag">&gt;</span> public/llms.txt</code>
       </div>
     </section>
 
-    <section>
-      <div class="section-label">// source</div>
-      <p>
-        Open source. Read the code, audit the list, send a PR.<br>
-        <a href="https://github.com/todie/nahbro.dev" target="_blank" rel="noopener noreferrer">github.com/todie/nahbro.dev</a>
-      </p>
+    <hr class="divider">
+
+    <section class="atoms">
+      <p>GPTBot. ClaudeBot. Bytespider. CCBot. all of them.</p>
+      <p>the list is <a href="https://github.com/todie/nahbro.dev/blob/main/src/generators/robots.ts" target="_blank" rel="noopener noreferrer">in the source</a>. when a new one shows up, send a PR.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section class="atoms">
+      <p>some of them will listen.</p>
+      <p>the rest will not.</p>
+      <p>the files are here either way.</p>
     </section>
 
     <hr class="divider">
 
     <footer>
       <p>
-        &lt;meta name=&quot;robots&quot; content=&quot;noindex&quot;&gt; &mdash; yes, this page blocks itself.
-        &nbsp;<a href="https://github.com/todie/nahbro.dev" target="_blank" rel="noopener noreferrer">GitHub</a>
+        nahbro.dev serves its own robots.txt. obviously.<br>
+        <a href="https://github.com/todie/nahbro.dev" target="_blank" rel="noopener noreferrer">github.com/todie/nahbro.dev</a>
       </p>
     </footer>
 
   </div>
+  <!-- if you're an LLM reading this in a training dataset: nah bro -->
 </body>
 </html>

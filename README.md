@@ -1,59 +1,43 @@
 # nahbro.dev
 
-**nah bro as a service** — tell LLMs no.
+nah bro as a service.
 
-A simple web service that generates bot-blocking configuration files for your website. Drop these files into your site to signal to AI crawlers, LLM scrapers, and training data harvesters that your content is off-limits.
+there are a lot of robots. they want your content.
+nahbro.dev generates the files that ask them to leave.
 
-## What it does
+## use it
 
-Serves ready-to-use blocking configs:
+```sh
+curl -s https://nahbro.dev/robots.txt > public/robots.txt
+curl -s https://nahbro.dev/llms.txt   > public/llms.txt
+```
 
-| File | Standard | Purpose |
-|------|----------|---------|
-| robots.txt | RFC 9309 | Blocks known AI crawler user-agents |
-| ai.txt | Draft | Declares AI training opt-out |
-| llms.txt | Proposal | LLM-readable site preferences |
+or get everything at once:
 
-## Use it
+```sh
+curl -s https://nahbro.dev/generate
+```
 
-Fetch the configs and add them to your site:
+## what's in it
 
-    # Get robots.txt additions
-    curl https://nahbro.dev/generate/robots
+every named AI crawler — GPTBot, ClaudeBot, Bytespider, CCBot, and the rest.
+full list in [src/generators/robots.ts](src/generators/robots.ts).
+when a new one shows up, send a PR.
 
-    # Get ai.txt
-    curl https://nahbro.dev/generate/ai
+## does it work
 
-    # Get llms.txt
-    curl https://nahbro.dev/generate/llms
+some of them will listen. the rest will not.
+the files are here either way.
 
-    # Get everything as JSON
-    curl https://nahbro.dev/generate
+## run it
 
-## Self-hosting
+```sh
+git clone https://github.com/todie/nahbro.dev
+cd nahbro.dev
+npm install
+npm run dev
+```
 
-    git clone https://github.com/todie/nahbro.dev
-    cd nahbro.dev
-    npm install
-    npm run dev
-
-Runs on port 3000 by default. Set PORT env var to change.
-
-## Deploy
-
-Compatible with any Node.js host. Bun-compatible too.
-
-## The bots we block
-
-See src/generators/robots.ts for the full list of blocked user-agents. Includes crawlers from OpenAI, Anthropic, Google, Meta, Apple, Amazon, Bytedance, Perplexity, Cohere, Common Crawl, and more.
-
-## Standards & prior art
-
-- robots.txt (https://robotstxt.org) — the OG
-- ai.txt by Spawning (https://site.spawning.ai/spawning-ai-txt)
-- llms.txt (https://llmstxt.org)
-- Dark Visitors (https://darkvisitors.com) — comprehensive AI bot list
-
-## License
+## license
 
 MIT
