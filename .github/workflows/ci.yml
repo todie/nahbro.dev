@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  check:
+  generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,3 +17,7 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run typecheck
+      - run: npm run generate
+      - name: verify generated files are committed
+        run: |
+          git diff --exit-code docs/ || (echo "docs/ is out of sync — run npm run generate and commit" && exit 1)
