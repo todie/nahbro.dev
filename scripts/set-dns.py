@@ -37,6 +37,16 @@ RECORDS = [
     ("www", "CNAME", "todie.github.io."),
     # GitHub Pages domain verification
     ("_github-pages-challenge-todie", "TXT", "f0829e2aa39f3bada9851d66928ed5"),
+
+    # type registry — DNS as a type system
+    # convention: _type-{typename}  TXT  "v=ek0.1 field=type ..."
+    # constraints: lowercase, hyphens only (no dots/caps in namecheap TXT hostnames)
+    ("_type",            "TXT", "v=ek0.1 kind=service out=robots.txt,ai.txt,llms.txt,generate catchall=nah repo=github:todie/nahbro.dev"),
+    ("_type-dnsrecord",  "TXT", "v=ek0.1 host=string rtype=A|CNAME|TXT addr=string ttl=number default.ttl=1800"),
+    ("_type-bot",        "TXT", "v=ek0.1 name=string vendor=string disallow=bool default.disallow=true src=src/generators/robots.ts"),
+    ("_type-session",    "TXT", "v=ek0.1 name=string goal=string vibe=ref format=ek spec=ek-format.md"),
+    ("_type-episode",    "TXT", "v=ek0.1 name=string intent=string why=string attempts=Attempt[] outcome=string[]"),
+    ("_type-attempt",    "TXT", "v=ek0.1 desc=string fail?=string signal?=string recal?=string"),
 ]
 
 LIVE_API_URL    = "https://api.namecheap.com/xml.response"
