@@ -59,6 +59,5 @@ export function generateRobotsTxt(): string {
     "User-agent: *",
     "Allow: /",
   ];
-  return lines.join("
-");
+  return lines.join("\n");
 }
