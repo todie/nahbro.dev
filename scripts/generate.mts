@@ -1,10 +1,13 @@
-import { generateRobotsTxt } from "./src/generators/robots.js";
-import { generateAiTxt } from "./src/generators/ai.js";
-import { generateLlmsTxt } from "./src/generators/llms.js";
+import { generateRobotsTxt } from "../src/generators/robots.js";
+import { generateAiTxt } from "../src/generators/ai.js";
+import { generateLlmsTxt } from "../src/generators/llms.js";
 import { writeFileSync } from "fs";
 
-writeFileSync("docs/robots.txt", generateRobotsTxt());
-writeFileSync("docs/ai.txt", generateAiTxt());
-writeFileSync("docs/llms.txt", generateLlmsTxt());
-writeFileSync("docs/aristocrats", "the aristocrats.");
-console.log("done");
+const robotsTxt = generateRobotsTxt();
+const aiTxt = generateAiTxt();
+const llmsTxt = generateLlmsTxt();
+
+writeFileSync("docs/robots.txt", robotsTxt);
+writeFileSync("docs/ai.txt", aiTxt);
+writeFileSync("docs/llms.txt", llmsTxt);
+writeFileSync("docs/generate", JSON.stringify({ "robots.txt": robotsTxt, "ai.txt": aiTxt, "llms.txt": llmsTxt }, null, 2));

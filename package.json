@@ -4,15 +4,8 @@
   "description": "nahbro as a service \u2014 tell LLMs no",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "lint": "eslint src --ext .ts",
-    "typecheck": "tsc --noEmit",
-    "generate": "tsx scripts/generate.mts"
-  },
-  "dependencies": {
-    "hono": "^4.4.0"
+    "generate": "tsx scripts/generate.mts",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
