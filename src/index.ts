@@ -45,8 +45,8 @@ app.get("/generate", (c) => {
     "llms.txt": generateLlmsTxt(),
   });
 });
-// nah
-app.all("*", (c) => c.text("nah", 404));
+// /dev/null
+app.all("*", (c) => c.body(null, 204));
 
 export default {
   port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
