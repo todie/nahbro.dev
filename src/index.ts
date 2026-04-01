@@ -45,6 +45,8 @@ app.get("/generate", (c) => {
     "llms.txt": generateLlmsTxt(),
   });
 });
+app.get("/aristocrats", (c) => c.text("the aristocrats."));
+
 // nah
 app.all("*", (c) => c.text("nah", 204));
 
