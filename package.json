@@ -1,18 +1,21 @@
 {
   "name": "nahbro",
   "version": "0.1.0",
-  "description": "nahbro as a service \u2014 tell LLMs no",
+  "description": "nahbro as a service — tell LLMs no",
   "type": "module",
   "scripts": {
     "generate": "tsx scripts/generate.mts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write ."
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.10",
     "@types/node": "^20.0.0",
-    "tsx": "^4.0.0",
-    "typescript": "^5.4.0",
-    "eslint": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0"
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.4.0"
   }
 }
