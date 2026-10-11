@@ -1,7 +1,7 @@
 {
   "name": "nahbro",
-  "version": "0.1.0",
-  "description": "nahbro as a service \u2014 tell LLMs no",
+  "version": "1.0.0",
+  "description": "nahbro as a service — tell LLMs no",
   "type": "module",
   "scripts": {
     "generate": "tsx scripts/generate.mts",
